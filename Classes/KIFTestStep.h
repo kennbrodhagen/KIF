@@ -318,18 +318,18 @@ typedef KIFTestStepResult (^KIFTestStepExecutionBlock)(KIFTestStep *step, NSErro
 + (id)stepToTapViewWithAccessibilityLabel:(NSString *)label value:(NSString *)value traits:(UIAccessibilityTraits)traits;
 
 /*!
- @method stepToTapViewWithAccessibilityLabel:value:traits:
- @abstract A step that taps a particular view in the view hierarchy.
- @discussion The view or accessibility element with the given label is searched for in the view hierarchy. If the element isn't found or isn't currently tappable, then the step will attempt to wait until it is. Once the view is present and tappable, a tap event is simulated in the center of the view or element.
+ @method stepToTapViewWithAccessibilityLabel:value:traits:numberOfTaps:
+ @abstract A step that taps a particular view in the view hierarchy a particular number of times.
+ @discussion The view or accessibility element with the given label is searched for in the view hierarchy. If the element isn't found or isn't currently tappable, then the step will attempt to wait until it is. Once the view is present and tappable, tap events are simulated in the center of the view or element.
  
- This variation allows specifying the number of taps to send to the view.
+ This variation allows finding a particular instance of an accessibility element. For example, a table view might have multiple elements with the accessibility label of "Employee", but only one that also has the accessibility value of "Bob".
  @param label The accessibility label of the element to tap.
  @param value The accessibility value of the element to tap.
  @param traits The accessibility traits of the element to tap. Elements that do not include at least these traits are ignored.
+ @param numberOfTaps The number of times to tap the element.
  @result A configured test step.
  */
-+ (id)stepToTapViewWithAccessibilityLabel:(NSString *)label value:(NSString *)value traits:(UIAccessibilityTraits)traits tapCount:(NSUInteger) tapCount;
-
++ (id)stepToTapViewWithAccessibilityLabel:(NSString *)label value:(NSString *)value traits:(UIAccessibilityTraits)traits numberOfTaps:(NSUInteger)numberOfTaps;
 
 /*!
  @method stepToTapScreenAtPoint:
